@@ -1,0 +1,68 @@
+\section{Lecture1}
+    \subsection{What is a Signal}
+        In this subsection, we will introduce some notions in \textbf{SS} course.
+
+        First, what is a signal? A signal is a \textbf{function}. Suppose \textbf{x} is a signal,
+        then it can represent the following mapping relationship:
+            \begin{equation}
+                \begin{aligned}
+                    \mathbb{R}(\mathrm{reals}) &\longrightarrow \mathbb{R}(\mathrm{reals}) \\
+                    \mathbb{Z}(\mathrm{integers}) &\longrightarrow \mathbb{R}(\mathrm{reals}) \\
+                    \mathbb{Z}(\mathrm{reals}) &\longrightarrow \mathbb{C}(\mathrm{complexes})
+                \end{aligned}
+            \end{equation}
+        In the above formula,  
+        we call the left \textbf{domain or input space}, we call the right \textbf{range or output sapce},
+        referring to the definition in the function,
+
+        At the same time, an element in domain is called \textbf{independent variable}, an element in range is called \textbf{dependent variable or the value of function}.
+        
+        After we give the doamin and the range, we need a \textbf{rule} to map every element in the domain to the range,
+        which says what we operate on the the independent variable. The rule is also called the \textbf{function relation}.
+        
+        For example, considering the following euqation:
+            \begin{equation}
+                x(n) = \cos \frac{\pi}{4} n
+            \end{equation}
+        we have the following relations:
+            \begin{itemize}
+                \item \textbf{domain}: $\mathbb{Z}$, a set of all integers;
+                \item \textbf{independent variable}: $n$, integers;
+                \item \textbf{range}: all real numbers in [-1,1];
+                \item \textbf{value of function}: $x(n)$;
+                \item \textbf{function relation}: \textbf{\emph{x}}, $  \cos \frac{\pi}{4}[\cdot] $
+            \end{itemize}
+    
+    \newpage
+    \subsection{DT and CT}
+        Now let's introduce \textbf{DT} and \textbf{CT}.
+
+        For a signal \textbf{x}, if the domain is $\mathbb{Z}$ or the set of all integers, 
+        then the signal \textbf{x} is called \textbf{Discrete-Time} signal (\textbf{DT}).
+        For example:
+            \begin{equation}
+                x(n) = \cos \frac{\pi}{4} n,\quad n \in \mathbb{Z}
+            \end{equation}
+        
+        For a signal \textbf{\emph{x}}, if the domain is $\mathbb{R}$ or the set of all reals, 
+        then the signal \textbf{\emph{x}} is called \textbf{Continuous-Time} signal (\textbf{CT}).
+        For example:
+            \begin{equation}
+                x(t) = \mathrm{e}^{-t},\quad t \in \mathbb{R}
+            \end{equation}
+
+        Meanwhile:
+            \begin{itemize}
+                \item if we use $n$ as the independent variable, that means the signal is \textbf{DT};
+                \item if we use $t$ as the independent variable, that means the signal is \textbf{CT};
+            \end{itemize}
+        these are the conventions.
+
+        \textbf{Supplement}: Does the signal have to be the function of \textbf{only time}? The answer is \textbf{No}.
+        For example, the independent variables can be \textbf{space coordinates}.
+
+    \subsection{Examples and Conventions}
+        
+
+
+        

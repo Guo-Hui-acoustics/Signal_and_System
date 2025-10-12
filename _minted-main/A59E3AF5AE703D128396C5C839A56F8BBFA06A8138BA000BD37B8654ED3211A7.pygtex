@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}msp430.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}define FAST 100000}
+\PYG{c+cp}{\PYGZsh{}define SLOW 1000000}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{WDTCTL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{WDTPW}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{WDTHOLD}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// stop watchdog timer}
+\PYG{+w}{    }\PYG{n}{P1DIR}\PYG{+w}{ }\PYG{o}{|=}\PYG{+w}{ }\PYG{n}{BIT0}\PYG{p}{;}\PYG{+w}{            }\PYG{c+c1}{// set P1.0 as the output}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{P1OUT}\PYG{+w}{ }\PYG{o}{|=}\PYG{+w}{ }\PYG{n}{BIT0}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// P1.0 outputs a high level}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}\PYGZus{}delay\PYGZus{}cycles}\PYG{p}{(}\PYG{n}{FAST}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// delay 500,000 clock cycles, approximately 0.5s}
+\PYG{+w}{        }\PYG{n}{P1OUT}\PYG{+w}{ }\PYG{o}{\PYGZam{}=}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{BIT0}\PYG{p}{;}\PYG{+w}{         }\PYG{c+c1}{// P1.0 outputs a low level}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}\PYGZus{}delay\PYGZus{}cycles}\PYG{p}{(}\PYG{n}{SLOW}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// delay 500,000 clock cycles, approximately 0.5s}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}\PYG{+w}{  }
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

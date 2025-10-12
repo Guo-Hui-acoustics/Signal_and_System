@@ -1,0 +1,48 @@
+% 0. main.tex - 笔记主文件，调用 <article> 类和我们自己的样式文件
+\documentclass[a4paper, 12pt]{article}
+\usepackage{mynotes}
+
+
+% 1. 作者与日期信息
+\notetitle{Signal and System}
+\noteauthor{GuoHui}
+\noteschool{Xiamen University}
+\notecollaborator{GuoHui}
+\notecollabschool{Xiamen University}
+\notedate{\today}
+
+% 2. 摘要
+\noteabstract{
+
+    These are notes on \textbf{Signal and System}.
+    
+
+} 
+
+% 3. 正文
+\begin{document}
+
+    % 3.1. 生成封面 (默认无页码)
+    \makenotetitle
+    
+    % 3.2. 生成目录 (设置为无页码)
+    \newpage
+    \thispagestyle{empty} % 将当前页(目录页)的样式设为空白
+    \tableofcontents
+    
+    % 3.3. 引入正文内容 (设置页码从1开始)
+    \newpage
+    \setcounter{page}{1} % 将页码计数器重置为1
+    % 导入第一节
+    \input{content/chapter1.tex}
+    \newpage
+    % 导入第二节
+    %\input{content/chapter2.tex}
+    
+    % 3.4. 参考文献 (如果需要的话)
+    % \newpage
+    % \begin{thebibliography}{99}
+    %     \bibitem{key1} ...
+    % \end{thebibliography}
+
+\end{document}
