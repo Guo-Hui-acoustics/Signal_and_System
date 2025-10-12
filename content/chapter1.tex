@@ -46,6 +46,7 @@
         
         For a signal \textbf{\emph{x}}, if the domain is $\mathbb{R}$ or the set of all reals, 
         then the signal \textbf{\emph{x}} is called \textbf{Continuous-Time} signal (\textbf{CT}).
+        Also, you can call \textbf{CT signal} as \textbf{Analog signal}.
         For example:
             \begin{equation}
                 x(t) = \mathrm{e}^{-t},\quad t \in \mathbb{R}
@@ -60,8 +61,160 @@
 
         \textbf{Supplement}: Does the signal have to be the function of \textbf{only time}? The answer is \textbf{No}.
         For example, the independent variables can be \textbf{space coordinates}.
+    
+    \subsection{Discrete-Time Signal and Digital Signal}
+        Sometimes, we don't distinguish \textbf{digital signal} and \textbf{discrete-time signal}, 
+        but they still have obvious differences.
 
+        In terms of digital signal, it still meets the definition of function. 
+        However, everything (including independent variable in domain and dependent variable in range) are represented by digits.
+
+        In terms of discrete-time signal, the independent variable in domain is discrete, 
+        but the values of the function can be reals (such as infinite recurring decimal).
+
+        But for the computers, we can't have infinite precision, so we need to quantify the numbers, 
+        which will cause us to lose accurcy.
+
+    \newpage
     \subsection{Examples and Conventions}
+        Let's give somen examples about \textbf{DT} and \textbf{CT}.
+
+        First, there is a continuous time example, a speech signal:
+            \inserttikzpicture
+                { % 第一个参数: TikZ 绘图代码
+                    \begin{axis}[
+                        compat=1.17,
+                        axis lines=middle,
+                        xtick=\empty,
+                        ytick=\empty,
+                        ymin=-2,
+                        ymax=2.2, 
+                        xmin=0,
+                        xmax=10.5,
+                        clip=false, 
+                        xlabel=$t$,
+                        xlabel style={
+                            at={(ticklabel* cs:1.0)},
+                            anchor=north,
+                        },
+                        ylabel={$x(t)$},
+                        ylabel style={
+                            at={(ticklabel* cs:1.0)},
+                            anchor=east,
+                            rotate=0,
+                        },
+                    ]
+                        \addplot[
+                            domain=0:10,
+                            samples=200,
+                            smooth,
+                            thick,
+                            blue,
+                        ] {sin(deg(2*x)) * (1 + 0.5*sin(deg(5*x)))};
+                    \end{axis}
+                }
+                {A Speech Signal}
+                {fig:speech_signal}
+        
+            \inserttikzpicture
+                {
+                    % 使用您提供的坐标轴样式和布局
+                    \begin{axis}[
+                        compat=1.17,
+                        axis lines=middle,
+                        xtick=\empty,  % 移除 x 轴刻度
+                        ytick=\empty,  % 移除 y 轴刻度
+                        % 调整坐标轴范围以适应 e^{-t} 并在 t<0 时有足够空间
+                        ymin=-1,
+                        ymax=8, 
+                        xmin=-2.5,
+                        xmax=5,
+                        clip=false, 
+                        xlabel=$t$,
+                        xlabel style={
+                            at={(ticklabel* cs:1.0)},
+                            anchor=north,
+                        },
+                        ylabel={$x(t)$},
+                        ylabel style={
+                            at={(ticklabel* cs:1.0)},
+                            anchor=east,
+                            rotate=0,
+                        },
+                    ]
+                    % 绘制函数 x(t) = e^{-t}，并扩展定义域至负数
+                    \addplot[
+                        domain=-2:4.5, % 设置绘图的定义域，包含负数
+                        samples=200,
+                        smooth,
+                        thick,
+                        blue,
+                    ] {exp(-x)};
+                    \end{axis}
+                } 
+                {$x(t)=e^{-t}$}
+                {fig:exp_decay}
+        \noindent For the \textbf{CT} signal, we have the following conventions:
+            \begin{itemize}
+                \item $x$ at time $t$: $x(t)$, refers to a specific value of the signal at time t;
+                \item $x$ without any arguments: \textbf{\emph{x}}, refers to the entire signal in $(-\infty, \infty)$;
+            \end{itemize}
+        However, in practice, when we define a signal, $x(t)$ also refers to the entire signal, not a specific value.
+
+        Second, there is a discrete time signal:
+            \inserttikzpicture
+                {
+                    % 使用 pgfplots 环境绘制 stem plot
+                    \begin{axis}[
+                        compat=1.17,
+                        axis lines=middle,          % 坐标轴在原点交汇
+                        ylabel={$x(n)$},            % y轴标签
+                        ylabel style={              % y轴标签样式，与您之前的示例保持一致
+                            at={(ticklabel* cs:1.0)},
+                            anchor=east,
+                            rotate=0,
+                        },
+                        xlabel=$n$,                 % x轴标签 (离散时间索引)
+                        xlabel style={              % x轴标签样式
+                            at={(ticklabel* cs:1.0)},
+                            anchor=north west,      % 微调位置防止与坐标轴箭头重叠
+                        },
+                        % 为离散时间信号设置坐标轴范围
+                        ymin=-2, ymax=3,
+                        xmin=-3.5, xmax=6.5,
+                        % 在x轴上显示整数刻度，这对于离散信号至关重要
+                        xtick={-3, -2, -1, 0, 1, 2, 3, 4, 5, 6},
+                        ytick=\empty,               % 保持y轴的简洁，移除刻度
+                        clip=false,                 % 允许绘图内容超出坐标轴范围
+                    ]
+                    % 使用 ycomb 样式来绘制“火柴杆”
+                    % mark=* 表示在每个数据点顶端添加一个实心圆点
+                    \addplot+[
+                        ycomb,
+                        blue, % 设置颜色
+                        thick, % 加粗线条
+                        mark=*,
+                        mark options={fill=blue}, % 将标记点用蓝色填充
+                    ] coordinates {
+                        (-2, 1)
+                        (-1, 2)
+                        (0, 1.5)
+                        (1, -1)
+                        (2, -1.5)
+                        (3, 1)
+                        (4, 0)
+                        (5, 0.5)
+                    };
+                    \end{axis}
+                }
+                {An Example for \textbf{DT} signal}
+                {fig:discrete_signal_example}
+        \noindent The picture above is called \textbf{lollipops} or \textbf{stem plots}, 
+        which is designed specifically for the \textbf{DT} signal. 
+        We can find that, it's discrete on the domain.
+        
+        
+
         
 
 
