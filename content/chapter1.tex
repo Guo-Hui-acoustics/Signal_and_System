@@ -34,7 +34,7 @@
             \end{itemize}
     
     \newpage
-    \subsection{DT and CT}
+    \subsection{DT Signal and CT Signal}
         Now let's introduce \textbf{DT} and \textbf{CT}.
 
         For a signal \textbf{x}, if the domain is $\mathbb{Z}$ or the set of all integers, 
@@ -77,7 +77,7 @@
 
     \newpage
     \subsection{Examples and Conventions}
-        Let's give somen examples about \textbf{DT} and \textbf{CT}.
+        Let's give some examples about \textbf{DT} and \textbf{CT} signal.
 
         First, there is a continuous time example, a speech signal:
             \inserttikzpicture
@@ -115,7 +115,7 @@
                 }
                 {A Speech Signal}
                 {fig:speech_signal}
-        
+        \noindent and there is an exp-deacy signal:
             \inserttikzpicture
                 {
                     % 使用您提供的坐标轴样式和布局
@@ -159,7 +159,8 @@
                 \item $x$ at time $t$: $x(t)$, refers to a specific value of the signal at time t;
                 \item $x$ without any arguments: \textbf{\emph{x}}, refers to the entire signal in $(-\infty, \infty)$;
             \end{itemize}
-        However, in practice, when we define a signal, $x(t)$ also refers to the entire signal, not a specific value.
+        However, in practice, when we define a signal, $x(t)$ also refers to the entire signal, 
+        not a specific value at time $t$.
 
         Second, there is a discrete time signal:
             \inserttikzpicture
@@ -212,6 +213,515 @@
         \noindent The picture above is called \textbf{lollipops} or \textbf{stem plots}, 
         which is designed specifically for the \textbf{DT} signal. 
         We can find that, it's discrete on the domain.
+    
+    \subsection{Some Important DT signal}
+        Now we introduce some important DT signal.
+                    
+        First, \textcolor{red}{Kronecker Delta / DT Impulse}. 
+        
+        In Lollipop language, it is represented as delta of $n$:
+                    \inserttikzpicture
+                        {% 使用 pgfplots 环境绘制单位冲激信号
+                            \begin{axis}[
+                                compat=1.17,
+                                axis lines=middle,
+                                ylabel={$\delta[n]$},       % y轴标签
+                                ylabel style={              % y轴标签样式
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=east,
+                                    rotate=0,
+                                },
+                                xlabel={$n$},               % x轴标签
+                                xlabel style={              % x轴标签样式
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=north west,
+                                },
+                                % 设置合适的坐标轴范围
+                                ymin=-0.5, ymax=1.5,
+                                xmin=-4.5, xmax=4.5,
+                                % 在x轴上显示整数刻度
+                                xtick={-4, -3, -2, -1, 0, 1, 2, 3, 4},
+                                ytick={1},                  % 仅在 y=1 处显示一个刻度以示高度
+                                clip=false,
+                            ]
+                            % 使用 ycomb 样式来绘制“火柴杆”
+                            % 单位冲激信号只在 n=0 处有值
+                            \addplot+[
+                                ycomb,
+                                blue,
+                                thick,
+                                mark=*,
+                                mark options={fill=blue},
+                            ] coordinates {
+                                (0, 1) % 关键数据点：n=0 时，值为 1
+                            };
+                            \end{axis}
+                        }
+                        {Kronecker Delata: $\delta[n]$}
+                        {fig:unit_impulse_signal}
+        In mathmatical language, we can define $\delta[n]$ :
+                \begin{equation}
+                    \delta[n]=
+                    \left\{
+                        \begin{aligned}
+                            1, \quad & n =0 \\
+                            0, \quad & n \neq 0
+                        \end{aligned}
+                    \right.
+                \end{equation}
+
+        From this example, you can find that, we use \textcolor{red}{Square Brakets} to 
+        enclose the variable $n$. 
+        And $\delta[n]$ is the most fundamental unit in DT signal.
+
+        Second, \textcolor{red}{DT Unit Step}.
+
+        In Lollipop language, the picture is as follows:
+                \inserttikzpicture
+                        {
+                            % 使用 pgfplots 环境绘制单位阶跃信号
+                            \begin{axis}[
+                                compat=1.17,
+                                axis lines=middle,
+                                ylabel={$u[n]$},            % y轴标签
+                                ylabel style={              % y轴标签样式
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=east,
+                                    rotate=0,
+                                },
+                                xlabel={$n$},                 % x轴标签
+                                xlabel style={              % x轴标签样式
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=north west,
+                                },
+                                % 设置合适的坐标轴范围
+                                ymin=-0.5, ymax=1.5,
+                                xmin=-4.5, xmax=8.5, % 稍微增加 xmax 为省略号留出空间
+                                % 在x轴上显示整数刻度
+                                xtick={-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6},
+                                ytick={1},                  % 仅在 y=1 处显示一个刻度
+                                clip=false,
+                            ]
+                            % 使用 ycomb 样式来绘制“火柴杆”
+                            \addplot+[
+                                ycomb,
+                                blue,
+                                thick,
+                                mark=*,
+                                mark options={fill=blue},
+                            ] coordinates {
+                                % u[n] 在 n>=0 时值为 1
+                                (0, 1)
+                                (1, 1)
+                                (2, 1)
+                                (3, 1)
+                                (4, 1)
+                                (5, 1) % 最后一个实际绘制的火柴杆
+                            };
+                            
+                            % 添加省略号来表示信号向右无限延伸
+                            \node[text width=1.5cm, align=left, font=\normalsize, anchor=west] at (axis cs: 5.8, 1) {$\dots \dots$};
+                            \end{axis}
+                        }
+                        {DT Unit Step: $u[n]$}
+                        {fig:unit_step_signal}
+        In mathmatical language, we can define $u[n]$:
+                \begin{equation}
+                    u[n]=
+                    \left\{
+                        \begin{aligned}
+                            1, \quad & n \geqslant 0 \\
+                            0, \quad & n \leq 0
+                        \end{aligned}
+                    \right.
+                \end{equation}
+
+        Also, we can define CT unit step $u(t)$:
+                \begin{equation}
+                    u(t)=
+                    \left\{
+                        \begin{aligned}
+                            1, \quad & t \geqslant 0 \\
+                            0, \quad & t \leq 0
+                        \end{aligned}
+                    \right.
+                \end{equation}
+        \noindent and here is the picture:
+                \inserttikzpicture
+                    {
+                        % 使用 pgfplots 环境绘制连续单位阶跃信号
+                        \begin{axis}[
+                            compat=1.17,
+                            axis lines=middle,
+                            ylabel={$u(t)$},            % y轴标签
+                            ylabel style={              % y轴标签样式
+                                at={(ticklabel* cs:1.0)},
+                                anchor=east,
+                                rotate=0,
+                            },
+                            xlabel={$t$},                 % x轴标签
+                            xlabel style={              % x轴标签样式
+                                at={(ticklabel* cs:1.0)},
+                                anchor=north west,
+                            },
+                            % 设置合适的坐标轴范围
+                            ymin=-0.5, ymax=1.5,
+                            xmin=-4.5, xmax=5.5,
+                            % 在x轴上显示整数刻度
+                            xtick={-4, -3, -2, -1, 0, 1, 2, 3, 4, 5},
+                            ytick={1},                  % 仅在 y=1 处显示一个刻度
+                            clip=false,
+                        ]
+                        % 使用 const plot 绘制分段常数函数，非常适合阶跃信号
+                        \addplot[
+                            const plot, % 使用阶梯图样式
+                            blue,
+                            thick,
+                        ] coordinates {
+                            (-4.5, 0) % 在 t<0 区间，值为0
+                            (0, 1)    % 在 t=0 时，跳变到1
+                            (5.5, 1)  % 在 t>0 区间，值保持为1
+                        };
+
+                        % 为了更精确地表示 t=0 处的跳变点
+                        % 在 (0,0) 处画一个空心圆，表示不包含该点
+                        \draw[fill=white, blue, thick] (axis cs:0,0) circle (2pt);
+                        % 在 (0,1) 处画一个实心圆，表示包含该点
+                        \fill[blue] (axis cs:0,1) circle (2pt);
+                        \end{axis}
+                    }
+                    {CT Unit Step: $u(t)$}
+                    {fig:continuous_unit_step}
+        From this example, you can find that, we use \textcolor{red}{Circle Brakets} to 
+        enclose the variable $t$. 
+    
+    \newpage
+    \subsection{Signal Addition}
+        Before the official start of our work, let's introduce \textcolor{red}{shifted impulses}.
+
+        Look at the following pictures:
+            \inserttikzpicture
+                {
+                    \pgfplotsset{
+                        discrete plot/.style={
+                            ycomb,           % 绘制针状图
+                            mark=*,          % 数据点标记为实心圆
+                            mark size=2pt,   % 标记大小
+                            line width=1pt,  % 线条宽度
+                            axis lines=middle, % 坐标轴在中间交叉
+                            xmin=-3.5, xmax=3.5, % x轴范围
+                            ymin=-0.2, ymax=1.0, % y轴范围
+                            xtick={-3,-2,-1,0,1,2,3}, % x轴刻度
+                            ytick={1},               % y轴刻度
+                            enlarge x limits=0.1,    % x轴范围适当放大
+                            enlarge y limits=0.2,    % y轴范围适当放大
+                            title style={yshift=0.5em}, % 标题位置
+                            xlabel={$n$},
+                            xlabel style={
+                                at={(ticklabel* cs:1.0)},
+                                anchor=north west,
+                            },
+                            ylabel style={
+                                at={(ticklabel* cs:1.0)},
+                                anchor=east,
+                                rotate=0,
+                            },
+                        }
+                    }
+                    % 上图:delta[n]
+                    \begin{axis}[
+                        discrete plot,
+                        ylabel={$\delta[n]$},
+                        at={(0, 5.5cm)} ]  % 增加垂直位移，为下方图像的箭头留出足够空间
+                    \addplot+ coordinates {
+                        (-3,0) (-2,0) (-1,0) (0,1) (1,0) (2,0) (3,0)
+                    };
+                    \end{axis}
+                    % 下图:delta[n]
+                    \begin{axis}[
+                        discrete plot,
+                        ylabel={$\delta[n-1]$},
+                        %title={时移后的单位脉冲信号 (Time-Shifted Signal)},
+                        at={(0, 0cm)}]
+                    % 这样只有针状图和数据点是绿色的，坐标轴保持默认的黑色
+                    \addplot+[green] coordinates {
+                        (-3,0) (-2,0) (-1,0) (0,0) (1,1) (2,0) (3,0)
+                    };
+                    \end{axis}
+                }
+                {Shifted Impulses: $\delta[n]$ and $\delta[n-1]$}
+                {fig:shifted_impulses}
+        When we operate on the time variable $n$ by adding or substracting it,
+        the \textcolor{red}{time axis} remains unchanged, 
+        only the function graph moves left or right.
+
+        Now suppose we carry out the following operations:
+                    \begin{equation}
+                        x[n] = \delta[n] + \delta[n-1]
+                    \end{equation}
+        what will we get? We will get the following Lollipop:
+                \inserttikzpicture
+                    {
+                        % 定义一个通用的离散信号绘图样式
+                        \pgfplotsset{
+                            discrete plot/.style={
+                                ycomb,           % 绘制针状图
+                                mark=*,          % 数据点标记为实心圆
+                                mark size=2pt,   % 标记大小
+                                line width=1.2pt,  % 线条加粗一点
+                                axis lines=middle,
+                                xmin=-3.5, xmax=3.5,
+                                ymin=-0.2, ymax=1.5,
+                                xtick={-3,-2,-1,0,1,2,3},
+                                ytick={1},
+                                enlarge x limits=0.1,
+                                enlarge y limits=0.2,
+                                xlabel={$n$},
+                                xlabel style={at={(ticklabel* cs:1.0)}, anchor=north west},
+                                ylabel style={at={(ticklabel* cs:1.0)}, anchor=east, rotate=0},
+                            }
+                        }
+                        \begin{axis}[
+                            discrete plot, % 应用上面定义的样式
+                            %title={信号叠加 (Signal Addition: $\delta[n] + \delta[n-1]$)},
+                            ylabel={$x[n]$}
+                        ]
+                        % 策略: 分层绘制
+                        % 1. 绘制 δ[n] 对应的部分 (蓝色)
+                        %    只提供 n=0 处的坐标点，pgfplots 会自动绘制从 y=0 到该点的 "ycomb" 线
+                        \addplot+[blue] coordinates {(0,1)};
+                        % 2. 绘制 δ[n-1] 对应的部分 (绿色)
+                        %    只提供 n=1 处的坐标点
+                        \addplot+[green] coordinates {(1,1)};
+                        % 3. 绘制其他整数点上的零值标记 (黑色)
+                        %    使用 'only marks' 选项，这样就不会画出长度为零的 ycomb 线，只保留标记点
+                        \addplot+[black, only marks] coordinates {
+                            (-3,0) (-2,0) (-1,0) (2,0) (3,0)
+                        };
+                        \end{axis}
+                    }
+                    {Signal Addition: $\delta[n] + \delta[n-1]$}
+                    {fig:signal_addition}
+
+        So remember: 
+        
+        \textbf{An impulse is not a scalar, it's a vector or tensor!}
+        
+        \textbf{Signal addition means adding up the values of each signal at each time point!}
+        
+        \subsection{Express $u[n]$ with $\delta[n]$}
+        Now do you know how to use $\delta[n]$ to express $u[n]$? 
+        
+        Yes, we can give:
+                        \begin{equation}
+                            \begin{aligned}
+                                u[n] = \quad & \delta[n] \\
+                                    +  & \delta[n-1] \\
+                                    +  & \delta[n-2] \\
+                                    +  & \delta[n-3] \\
+                                    +  & \cdots \\
+                                    +  & \delta[n-k] \\
+                            \end{aligned}
+                        \end{equation}
+        each shifted impulses is a vector.
+        And we can give a more concise version:
+                        \begin{equation}
+                            u[n] = \sum_{k=0}^{\infty} \delta[n-k]
+                        \end{equation}
+        
+        Here, it is necessary for us to emphasize the meaning of \textcolor{red}{=}: at every time point, the value of left signal is equal to value of the right signal.
+
+        Now let's take a look at the formula from another perspective:
+                        \begin{equation}
+                            u[n] = \sum_{k=0}^{\infty} \delta[n-k]
+                        \end{equation}
+        Make the following variable substitutions:
+                        \begin{equation}
+                            l = n -k 
+                        \end{equation}
+        Then:
+                        \begin{equation}
+                            k = n -l 
+                        \end{equation}
+        Substitute back, eliminate the variable $k$, change the upper and lower bounds of the summation:
+                        \begin{equation}
+                            u[n] = \sum_{l=-\infty}^{n} \delta[l]
+                        \end{equation}
+
+        How can we understand the equation above? First of all, we should know:
+                        \begin{center}
+                            \textcolor{red}{When we use the fixed variable $n$, we consider it as a signal, a function or a vector. (e.g. $f(x)$)};
+
+                            \textcolor{red}{When we use another variable or a scalar, we might consider it as a value. (e.g. $f(10)$ or $f(k)$)}
+                        \end{center}
+        so the above equation is a definition, or represented as a signal.
+
+        So how can we calculate $u[10]$ using the equation? We do as follows:
+                        \begin{equation}
+                            u[10] = \cdots + \delta[-100] + \cdots + \delta[0] + \cdots + \delta[10]=1
+                        \end{equation}
+        and we can find, only $\delta[0] = 1$, other components are all 0.
+
+        We can regard the $\sum$ as a big net, only the net's bounds catch the 0
+        (the 0 is between $-\infty$ and $n$), then the result is 1:
+                        \begin{equation}
+                            u[n] = 
+                            \left\{
+                                \begin{aligned}
+                                    &0, \quad n \leq 0 \quad (0 \notin (-\infty, n) )\\
+                                    &1, \quad n = 0\\
+                                    &1, \quad n > 0\quad (0 \in (-\infty, n) )
+                                \end{aligned}
+                            \right.
+                        \end{equation}
+                        
+    \subsection{Integral and Derivative in DT}
+        Now let's re-examine the formula:
+                        \begin{equation}
+                            u[n] = \sum_{l=-\infty}^{n} \delta[l]
+                        \end{equation}
+        we could say: In DT, the unit step is the cumulative sum of $\delta$.
+        In other words, it's the DT integral of $\delta$.
+
+        Then, you can easily get: In DT, $\delta$ is the derivative of the unit step.
+
+        How can we verify the above idea? We can try to express $\delta[n]$ with $u[n]$.
+
+        Look at the following pictures:
+            \inserttikzpicture
+                {
+                    \pgfplotsset{
+                            discrete plot/.style={
+                                ycomb,           % 绘制针状图
+                                mark=*,          % 数据点标记为实心圆
+                                mark size=2pt,   % 标记大小
+                                line width=1pt,  % 线条宽度
+                                axis lines=middle, % 坐标轴在中间交叉
+                                xmin=-3.5, xmax=5.5, % x轴范围
+                                ymin=-0.2, ymax=1.1, % y轴范围稍稍扩大，让'1'的刻度更清晰
+                                xtick={-3,-2,-1,0,1,2,3,4,5}, % x轴刻度
+                                ytick={1},               % y轴刻度
+                                enlarge x limits=0.1,    % x轴范围适当放大
+                                enlarge y limits=0.2,    % y轴范围适当放大
+                                title style={yshift=0.5em}, % 标题位置
+                                xlabel={$n$},
+                                xlabel style={
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=north west,
+                                },
+                                ylabel style={
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=east,
+                                    rotate=0,
+                                },
+                            }
+                        }
+                        % ----- 上图: u[n] -----
+                        \begin{axis}[
+                            discrete plot,
+                            ylabel={$u[n]$},
+                            %title={单位阶跃信号 (Unit Step Signal)},
+                            at={(0, 5.0cm)} % 调整了间距以适应标题
+                        ]
+                        % 使用蓝色绘制 u[n] 的数据点
+                        \addplot+[blue] coordinates {
+                            (-3,0) (-2,0) (-1,0) (0,1) (1,1) (2,1) (3,1)(4,1)(5,1)
+                        };
+                        \end{axis}
+                        % ----- 下图: u[n-1] -----
+                        \begin{axis}[
+                            discrete plot,
+                            ylabel={$u[n-1]$},
+                            %title={时移阶跃信号 (Time-Shifted Step)},
+                            at={(0, 0cm)}
+                        ]
+                        % 使用绿色绘制 u[n-1] 的数据点
+                        \addplot+[green] coordinates {
+                            (-3,0) (-2,0) (-1,0) (0,0) (1,1) (2,1) (3,1)(4,1)(5,1)
+                        };
+                        \end{axis}
+                    }
+                % 第二、三个大括号，分别是总标题和标签
+                {$u[n]$ and $u[n-1]$}
+                {fig:shifted_steps}
+        So you can easily get:
+            \begin{equation}
+                \delta[n] = \frac{u[n] - u[n-1]}{1}
+            \end{equation}
+        If we substitute \textcolor{red}{1} to $\Delta$, we get:
+            \begin{equation}
+                \delta[n] = \frac{u[n] - u[n-1]}{\Delta}
+            \end{equation}
+        Actually, it's the definition of the limit when we operate:
+            \begin{equation}
+                \Delta \rightarrow 0
+            \end{equation}
+        However, in DT, we cann't get a scalar smaller than 1, because we only use integers.
+
+        To sum up:
+            \inserttikzpicture
+                {
+                    \tikzset{relation_node/.style={
+                    circle,          % 形状为圆形
+                    draw,            % 绘制边框
+                    thick,           % 边框加粗
+                    minimum size=1cm % 最小尺寸
+                }}
+            
+                % 2. 放置左右两个节点
+                \node[relation_node] (delta) at (0,0) {$\delta[n]$};
+                \node[relation_node] (u) at (4,0) {$u[n]$}; 
+                % 3. 绘制上方的线（从 delta 指向 u），上方显示“求和(积分)”
+                \draw[
+                    ->,               % 单向箭头，指向右
+                    thick,            % 线条加粗
+                    shorten <=2pt,    
+                    shorten >=2pt,
+                    transform canvas={yshift=2.5pt}     
+                ] 
+                    (delta) -- (u) % 从delta的右上角到u的左上角，使线条在节点上方
+                    node[midway, above=1pt] {$\int$ or $\sum$};
+                
+                % 4. 绘制下方的线（从 u 指向 delta），下方显示“差分”
+                \draw[
+                    <-,               % 单向箭头，指向左 (或者用 -> 加反向路径 (u) -- (delta))
+                    thick,            % 线条加粗
+                    shorten <=2pt,    
+                    shorten >=2pt,
+                    transform canvas={yshift=-2.5pt}     
+                ] 
+                (delta) -- (u) % 从delta的右下角到u的左下角，使线条在节点下方
+                node[midway, below=1pt] {$\frac{d}{dt}$ or $\nabla$};
+                }
+                {Relation of $\delta[n]$ and $u[n]$}
+                {fig:relation_delta_u}
+        \noindent In this picture, the signal can in DT or CT.
+
+        
+
+        
+
+
+        
+        
+
+        
+        
+                        
+        
+        
+        
+
+
+
+
+
+
+
+
+        
+        
+
         
         
 
