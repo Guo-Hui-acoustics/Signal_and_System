@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  16 OCT 2025 17:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  17 OCT 2025 12:08
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -540,12 +540,34 @@ File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfplots@group@current@column=\count330
  (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+)) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex)) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybending.code.tex
+File: tikzlibrarybending.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulebending.code.tex
+File: pgfmodulebending.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulenonlineartransformations.code.tex
+File: pgfmodulenonlineartransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgftransformnonlinearflatness=\dimen322
+) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibrarycurvilinear.code.tex
+File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@curvilinear@time@a=\dimen323
+\pgf@curvilinear@length@a=\dimen324
+\pgf@curvilinear@length@b=\dimen325
+\pgf@curvilinear@length@c=\dimen326
+\pgf@curvilinear@length@d=\dimen327
+)
+\pgf@arrows@the@rigidity=\dimen328
+)) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen322
-\pgfarrowlength=\dimen323
-\pgfarrowwidth=\dimen324
-\pgfarrowlinewidth=\dimen325
+\pgfarrowinset=\dimen329
+\pgfarrowlength=\dimen330
+\pgfarrowwidth=\dimen331
+\pgfarrowlinewidth=\dimen332
 ) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -581,7 +603,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count331
 )
-\@linkdim=\dimen326
+\@linkdim=\dimen333
 \Hy@linkcounter=\count332
 \Hy@pagecounter=\count333
  (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
@@ -610,15 +632,15 @@ Package hyperref Info: Bookmarks ON on input line 4446.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen327
+\XeTeXLinkMargin=\dimen334
  (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count336
-\Field@Width=\dimen328
-\Fld@charsize=\dimen329
+\Field@Width=\dimen335
+\Fld@charsize=\dimen336
 Package hyperref Info: Hyper figures OFF on input line 6063.
 Package hyperref Info: Link nesting OFF on input line 6068.
 Package hyperref Info: Hyper index ON on input line 6071.
@@ -652,7 +674,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip62
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 40.
+Package hyperref Info: Option `colorlinks' set `true' on input line 43.
  (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/latex/minted/minted.sty
 Package: minted 2023/12/18 v2.9 Yet another Pygments shim for LaTeX
  (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/latex/fvextra/fvextra.sty
@@ -672,16 +694,16 @@ Package: lineno 2023/05/20 line numbers on paragraphs v5.3
 \linenopenalty=\count345
 \output=\toks46
 \linenoprevgraf=\count346
-\linenumbersep=\dimen330
-\linenumberwidth=\dimen331
+\linenumbersep=\dimen337
+\linenumberwidth=\dimen338
 \c@linenumber=\count347
 \c@pagewiselinenumber=\count348
 \c@LN@truepage=\count349
 \c@internallinenumber=\count350
 \c@internallinenumbers=\count351
-\quotelinenumbersep=\dimen332
-\bframerule=\dimen333
-\bframesep=\dimen334
+\quotelinenumbersep=\dimen339
+\bframerule=\dimen340
+\bframesep=\dimen341
 \bframebox=\box72
 \linenoamsmath@ams@eqpen=\count352
 LaTeX Info: Redefining \\ on input line 3180.
@@ -699,21 +721,21 @@ LaTeX Info: Redefining \\ on input line 3180.
 \c@FV@HighlightLinesStop=\count361
 \FV@LoopCount=\count362
 \FV@NCharsBox=\box74
-\FV@BreakIndent=\dimen335
+\FV@BreakIndent=\dimen342
 \FV@BreakIndentNChars=\count363
-\FV@BreakSymbolSepLeft=\dimen336
+\FV@BreakSymbolSepLeft=\dimen343
 \FV@BreakSymbolSepLeftNChars=\count364
-\FV@BreakSymbolSepRight=\dimen337
+\FV@BreakSymbolSepRight=\dimen344
 \FV@BreakSymbolSepRightNChars=\count365
-\FV@BreakSymbolIndentLeft=\dimen338
+\FV@BreakSymbolIndentLeft=\dimen345
 \FV@BreakSymbolIndentLeftNChars=\count366
-\FV@BreakSymbolIndentRight=\dimen339
+\FV@BreakSymbolIndentRight=\dimen346
 \FV@BreakSymbolIndentRightNChars=\count367
 \c@FancyVerbLineBreakLast=\count368
 \FV@LineBox=\box75
 \FV@LineIndentBox=\box76
 \c@FV@BreakBufferDepth=\count369
-\FV@LineWidth=\dimen340
+\FV@LineWidth=\dimen347
 ) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Unrestricted shell escape enabled on input line 75.
@@ -728,10 +750,10 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )) (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip64
-\fb@frw=\dimen341
-\fb@frh=\dimen342
-\FrameRule=\dimen343
-\FrameSep=\dimen344
+\fb@frw=\dimen348
+\fb@frh=\dimen349
+\FrameRule=\dimen350
+\FrameSep=\dimen351
 )
 \minted@appexistsfile=\read4
 \minted@bgbox=\box77
@@ -778,13 +800,13 @@ LaTeX Font Info:    ... okay on input line 23.
  (d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count373
-\scratchdimen=\dimen345
+\scratchdimen=\dimen352
 \scratchbox=\box78
 \nofMPsegments=\count374
 \nofMParguments=\count375
 \everyMPshowfont=\toks48
 \MPscratchCnt=\count376
-\MPscratchDim=\dimen346
+\MPscratchDim=\dimen353
 \MPnumerator=\count377
 \makeMPintoPDFobject=\count378
 \everyMPtoPDFconversion=\toks49
@@ -914,27 +936,34 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 512.
 
-[8] [9] [10]) [11] (./main.aux)
+[8] [9] [10] [11] [12]) [13] [14] (./content/chapter2.tex) [15] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1B2425E434A547D21FE1FDAD9187B5D9;1566.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 5D64F08ED7C4D71F843E5592F5049980;1931
+(rerunfilecheck)             After:  C0BC94B3913F7FCE0A6F02CB732CE3CD;2161.
  ) 
 Here is how much of TeX's memory you used:
- 38873 strings out of 474116
- 907000 string characters out of 5735645
- 1944190 words of memory out of 5000000
- 60556 multiletter control sequences out of 15000+600000
+ 39826 strings out of 474116
+ 930974 string characters out of 5735645
+ 1945190 words of memory out of 5000000
+ 61462 multiletter control sequences out of 15000+600000
  598810 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 105i,14n,145p,722b,2208s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 105i,14n,145p,722b,2314s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb>
-Output written on main.pdf (13 pages, 229008 bytes).
+Output written on main.pdf (17 pages, 242734 bytes).
 PDF statistics:
- 231 PDF objects out of 1000 (max. 8388607)
- 184 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
