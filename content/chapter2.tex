@@ -1,3 +1,306 @@
 \section{Lecture1}
-    \subsection{System Properties}
-        
+    \subsection{LTI System Properties--Linearity}
+    What is \textcolor{red}{LTI System}?
+
+    It means \textbf{linear} and \textbf{time-invariant}. And this definition gives two properties of LTI.
+
+    Suppose we have a LTI system $H$, 
+    you should know that the nature of the system is independent of the input.
+    So we can give $H$ an arbitrary input $x$, 
+    correspondingly we have an output $y$.
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {input signal $x$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {output signal $y$};
+                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    \draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {LTI system}
+                {fig:LTI_system_model}
+
+    First, \textbf{Linearity}. This property contains two sub-properties:
+        \begin{itemize}
+            \item \textbf{Scaling property}: 
+            
+            Suppose we have an arbitrary scalar $\alpha$. 
+            Then if we expand input by $\alpha$ times, the output will also be expanded by $\alpha$ times.
+
+            \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$\alpha x$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$\alpha y$};
+                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    \draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Scaling Property}
+                {fig:scaling_property}
+
+            \item \textbf{Additivity}
+            
+            Suppose we have the following input-output conbination, all the inputs are arbitrary:
+
+            \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x_1$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y_1$};
+                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    \draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Combination1}
+                {fig:combination1}
+
+                \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x_2$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y_2$};
+                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    \draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Combination2}
+                {fig:combination2}
+
+                Then additivity is manifested as :
+                \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x_1 + x_2$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y_1 + y_2$};
+                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    \draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Additivity}
+                {fig:additivity}
+
+        \end{itemize}
+    
+    Then, let's take a look at one example. There is a 2-point moving average filter (DT):
+        \begin{equation}
+            y[n] = \frac{x[n-1] + x[n]}{2}
+        \end{equation}
+    Does it have the linearity?
+
+    \textbf{Proof.}
+
+    Suppose there is an arbitrary input-output combination:
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x[n]$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y[n] = \frac{x[n-1]+x[n]}{2}$};
+                    %\node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    %\draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Example1}
+                {fig:example1}
+    
+    Now verify the scaling property, let:
+        \begin{equation}
+            \hat{x}[n] = \alpha x[n], \quad \alpha \in \mathbb{C}
+        \end{equation}
+
+    And the input-output relation is:
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$\hat{x}[n]$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$\hat{y}[n]$};
+                    %\node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    %\draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Hat Relation}
+                {fig:hat_relation}
+
+    From the definitio of the system, we know:
+                    \begin{equation}
+                        \hat{y}[n] = \frac{\hat{x}[n-1] + \hat{x}[n]}{2}
+                    \end{equation}
+    
+    As we have the following relation:
+        \begin{equation}
+            \hat{x}[n] = \alpha x[n], \quad \alpha \in \mathbb{C}
+        \end{equation}
+
+    So:
+        \begin{equation}
+            \begin{aligned}
+            \hat{y}[n] =  &\frac{\alpha \hat{x}[n-1] +  \alpha \hat{x}[n] }{2} \\
+                       =  &\alpha \frac{\hat{x}[n-1] + \hat{x}[n]}{2}\\
+                       =  & \alpha y[n]
+             \end{aligned}
+        \end{equation}
+    
+    \textbf{End.}
+
+    
+    
+
+    
+
+    
+    
+    
