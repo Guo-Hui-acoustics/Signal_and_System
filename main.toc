@@ -9,5 +9,14 @@
 \contentsline {subsection}{\numberline {1.8}Integral and Derivative in DT}{9}{subsection.1.8}%
 \contentsline {subsection}{\numberline {1.9}Why do We Need Impulses?}{11}{subsection.1.9}%
 \contentsline {subsection}{\numberline {1.10}Introduction to System}{13}{subsection.1.10}%
-\contentsline {section}{\numberline {2}Lecture1}{15}{section.2}%
-\contentsline {subsection}{\numberline {2.1}LTI System Properties--Linearity}{15}{subsection.2.1}%
+\contentsline {section}{\numberline {2}Lecture2}{15}{section.2}%
+\contentsline {subsection}{\numberline {2.1}System Properties--Linearity}{15}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Linearity Example1-2 Point Moving Average Filter}{16}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Linearity Example2-Median Filter}{18}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Time Invariance-TI}{21}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Impulse Response}{22}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Convolution}{24}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Is the convolution operation commutative?}{24}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Does the convolution operation have the associative law?}{25}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {2.6.3}How can we understand $\DOTSB \sum@ \slimits@ _{k=-\infty }^{+\infty } \DOTSB \sum@ \slimits@ _{m=-\infty }^{+\infty } x[k]h_1[m-k] h_2[n-m]$? }{26}{subsubsection.2.6.3}%
+\contentsline {subsubsection}{\numberline {2.6.4}A cascade of two LTI system.}{27}{subsubsection.2.6.4}%

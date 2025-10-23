@@ -1,48 +1,12 @@
-\section{Lecture1}
-    \subsection{LTI System Properties--Linearity}
-    What is \textcolor{red}{LTI System}?
+\section{Lecture2}
+    \subsection{System Properties--Linearity}
+    What is {system}?
 
-    It means \textbf{linear} and \textbf{time-invariant}. And this definition gives two properties of LTI.
-
-    Suppose we have a LTI system $H$, 
-    you should know that the nature of the system is independent of the input.
-    So we can give $H$ an arbitrary input $x$, 
-    correspondingly we have an output $y$.
-        \inserttikzpicture
-                {
-                    \tikzset{
-                        node distance=2.5cm,
-                        block/.style={
-                            rectangle, 
-                            draw, 
-                            thick, 
-                            minimum height=1.5cm, 
-                            minimum width=1.5cm, 
-                            text centered
-                        },
-                        text_node/.style={
-                            align=center
-                        },
-                        arrow/.style={
-                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
-                            thick
-                        }
-                    }
-                    % 2. 将原代码中的节点和绘图指令放在这里
-                    % 定义各个节点 (Node)
-                    \node[text_node] (input) {input signal $x$};
-                    \node[block, right=of input] (system) {H};
-                    \node[text_node, right=of system] (output) {output signal $y$};
-                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
-                    % 绘制箭头连接节点
-                    \draw[arrow] (input) -- (system);
-                    \draw[arrow] (system) -- (output);
-                    \draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
-                }
-                {LTI system}
-                {fig:LTI_system_model}
-
-    First, \textbf{Linearity}. This property contains two sub-properties:
+    The nature of the system is independent of the input, and it associates the input with the output. For example:
+        \begin{equation}
+            y[n] = x[n] + x[n-1]
+        \end{equation}
+    What is \textcolor{red}{Linearity}? This property contains two sub-properties:
         \begin{itemize}
             \item \textbf{Scaling property}: 
             
@@ -74,7 +38,7 @@
                     \node[text_node] (input) {$\alpha x$};
                     \node[block, right=of input] (system) {H};
                     \node[text_node, right=of system] (output) {$\alpha y$};
-                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    \node[below=0.5cm of system] (system_label) {\textbf{Linear system}};
                     % 绘制箭头连接节点
                     \draw[arrow] (input) -- (system);
                     \draw[arrow] (system) -- (output);
@@ -112,7 +76,7 @@
                     \node[text_node] (input) {$x_1$};
                     \node[block, right=of input] (system) {H};
                     \node[text_node, right=of system] (output) {$y_1$};
-                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    \node[below=0.5cm of system] (system_label) {\textbf{Linear system}};
                     % 绘制箭头连接节点
                     \draw[arrow] (input) -- (system);
                     \draw[arrow] (system) -- (output);
@@ -146,7 +110,7 @@
                     \node[text_node] (input) {$x_2$};
                     \node[block, right=of input] (system) {H};
                     \node[text_node, right=of system] (output) {$y_2$};
-                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    \node[below=0.5cm of system] (system_label) {\textbf{Linear system}};
                     % 绘制箭头连接节点
                     \draw[arrow] (input) -- (system);
                     \draw[arrow] (system) -- (output);
@@ -181,7 +145,7 @@
                     \node[text_node] (input) {$x_1 + x_2$};
                     \node[block, right=of input] (system) {H};
                     \node[text_node, right=of system] (output) {$y_1 + y_2$};
-                    \node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    \node[below=0.5cm of system] (system_label) {\textbf{Linear system}};
                     % 绘制箭头连接节点
                     \draw[arrow] (input) -- (system);
                     \draw[arrow] (system) -- (output);
@@ -191,14 +155,15 @@
                 {fig:additivity}
 
         \end{itemize}
-    
-    Then, let's take a look at one example. There is a 2-point moving average filter (DT):
+
+    \subsection{Linearity Example1-2 Point Moving Average Filter}
+    There is a 2-point moving average filter (DT):
         \begin{equation}
             y[n] = \frac{x[n-1] + x[n]}{2}
         \end{equation}
     Does it have the linearity?
 
-    \textbf{Proof.}
+    \noindent \textbf{Proof.}
 
     Suppose there is an arbitrary input-output combination:
         \inserttikzpicture
@@ -235,10 +200,9 @@
                 {Example1}
                 {fig:example1}
     
-    Now verify the scaling property, let:
-        \begin{equation}
-            \hat{x}[n] = \alpha x[n], \quad \alpha \in \mathbb{C}
-        \end{equation}
+    Now verify the scaling property.
+    
+    Let $\hat{x}[n] = \alpha x[n], \quad \alpha \in \mathbb{C}$.
 
     And the input-output relation is:
         \inserttikzpicture
@@ -293,8 +257,847 @@
                        =  & \alpha y[n]
              \end{aligned}
         \end{equation}
+
+    Then let's verify the additivity.
+
+    Let $\hat{x}[n] = x_1[n] + x_2[n]$.
+
+    And the imput-output relation is:
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x_1[n]$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y_1[n]=\frac{x_1[n] + x_1[n-1]}{2}$};
+                    %\node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    %\draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Relation1}
+                {fig:relation1}
+
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x_2[n]$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y_2[n]=\frac{x_2[n] + x_2[n-1]}{2}$};
+                    %\node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    %\draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Relation2}
+                {fig:relation2}
+
+        From the definitio of the system, we know:
+                    \begin{equation}
+                        \hat{y}[n] = \frac{\hat{x}[n-1] + \hat{x}[n]}{2}
+                    \end{equation}
+
+    As we have the following relation:
+        \begin{equation}
+            \hat{x}[n] = x_1[n] + x_2[n]
+        \end{equation}
     
-    \textbf{End.}
+    So:
+        \begin{equation}
+            \begin{aligned}
+            \hat{y}[n] =  &\frac{\alpha \hat{x}[n-1] +  \alpha \hat{x}[n] }{2} \\
+                       =  &\frac{x_1[n] + x_2[n] + x_1[n-1] + x_2[n-1]}{2}\\
+                       =  & y_1[n] + y_2[n]
+             \end{aligned}
+        \end{equation}
+    
+    So this system satisfies the linearity.
+
+    \noindent \textbf{End.}
+
+    \subsection{Linearity Example2-Median Filter}
+    There is a median filter (DT):
+        \begin{equation}
+            y[n] = med\{x[n-1],x[n],x[n+1]\}
+        \end{equation}
+    Does it have the linearity?
+
+    First, what is the median of a sequence of numbers? 
+    Consider there are three numbers, and we want to get the median.
+
+    If there are no equal numbers, the median is the number whose size is in the middle;
+    If there are two or three equal numbers, the median is the average of equal numbers.
+
+    Then, we should have an intuitive understanding of this filter. 
+    Look at the following example:
+        \inserttikzpicture
+                    {
+                        \begin{axis}[
+                            % --- 坐标轴样式 ---
+                            axis lines=middle,              % 坐标轴在原点 (0,0) 相交
+                            xlabel={$n$},                   % 横轴名称
+                            ylabel={$x[n]$},                % 纵轴名称
+                            % --- 坐标轴范围与刻度 ---
+                            % 扩大 xmin 和 xmax 为省略号留出空间
+                            xmin=-3.5, xmax=2.5,
+                            ymin=0, ymax=2.5,
+                            xtick={-3, -2, -1, 0, 1, 2},
+                            ytick=\empty,
+                            % --- 标签位置样式 ---
+                            xlabel style={at={(ticklabel* cs:1.0)}, anchor=north west},
+                            ylabel style={at={(ticklabel* cs:1.0)}, anchor=east, rotate=0},
+                            % --- 自定义节点(标签)的样式 ---
+                            nodes near coords={\pgfplotspointmeta}, 
+                            every node near coord/.style={
+                                anchor=east, 
+                                rotate=0,
+                                black,
+                                font=\small
+                            }
+                        ]
+                        % --- 绘制火柴杆和标签 ---
+                        \addplot+ [
+                            ycomb, blue, mark=*, mark size=2pt, line width=1.2pt
+                        ] 
+                        table[
+                            header=false,
+                            x index=0,              % 使用第 0 列 (第一列) 作为 x
+                            y index=1,              % 使用第 1 列 (第二列) 作为 y
+                            meta index=2,             % 使用第 2 列 (第三列) 作为标签元数据
+                            point meta=explicit symbolic,
+                            row sep=crcr % 修正了行分隔符
+                        ] {
+                            % n     height   label
+                           -3      0          {} \\
+                           -2      2          {$2$} \\
+                           -1      1          {$1$} \\
+                            0      1.5        {$1.5$}  \\
+                            1      2        {$2$}  \\
+                            2      1.25        {$1.25$}  \\
+                        };
+                        \end{axis}
+                }
+                {Median Filter Input: $x[n]$}
+                {fig:med_filter_input}
+
+    \noindent How can we get $y[-2]$? 
+
+    According to the definition, to get $y[-2]$, 
+    we need $x[-3]-0$, $x[-2]-2$ and $x[-1]-1$. There are no equal numbers,
+    so $y[-2]$ or the median is 1.
+
+    Similarly, we obtain the outputs at the other time points:
+        \inserttikzpicture
+                    {
+                        \begin{axis}[
+                            % --- 坐标轴样式 ---
+                            axis lines=middle,              % 坐标轴在原点 (0,0) 相交
+                            xlabel={$n$},                   % 横轴名称
+                            ylabel={$y[n]$},                % 纵轴名称
+                            % --- 坐标轴范围与刻度 ---
+                            % 扩大 xmin 和 xmax 为省略号留出空间
+                            xmin=-3.5, xmax=2.5,
+                            ymin=0, ymax=2.5,
+                            xtick={-2, -1, 0, 1},
+                            ytick=\empty,
+                            % --- 标签位置样式 ---
+                            xlabel style={at={(ticklabel* cs:1.0)}, anchor=north west},
+                            ylabel style={at={(ticklabel* cs:1.0)}, anchor=east, rotate=0},
+                            % --- 自定义节点(标签)的样式 ---
+                            nodes near coords={\pgfplotspointmeta}, 
+                            every node near coord/.style={
+                                anchor=east, 
+                                rotate=0,
+                                black,
+                                font=\small
+                            }
+                        ]
+                        % --- 绘制火柴杆和标签 ---
+                        \addplot+ [
+                            ycomb, blue, mark=*, mark size=2pt, line width=1.2pt
+                        ] 
+                        table[
+                            header=false,
+                            x index=0,              % 使用第 0 列 (第一列) 作为 x
+                            y index=1,              % 使用第 1 列 (第二列) 作为 y
+                            meta index=2,             % 使用第 2 列 (第三列) 作为标签元数据
+                            point meta=explicit symbolic,
+                            row sep=crcr % 修正了行分隔符
+                        ] {
+                            % n     height   label
+                           -2      1          {$1$} \\
+                           -1      1.5          {$1.5$} \\
+                            0      1.5        {$1.5$}  \\
+                            1      1.5        {$1.5$}  \\
+                        };
+                        \end{axis}
+                }
+                {Median Filter Output: $y[n]$}
+                {fig:med_filter_output}
+    
+    Now, give the proof.
+
+    \noindent \textbf{Proof}.
+
+    First, we should verify whether it satisfies the scaling property.
+
+    Obviously, this property is satisfied. 
+    Because enlarging the same group of numbers by the same multiple doesn't change 
+    the order of size.
+
+    Then, does it satisfy the additivity? Intuition tells us that it's not satisfied.
+
+    If we want to prove that it's not satisfied, we only need to provide a counter example.
+
+    This example can be an impulse and a shifted impulse:
+        \inserttikzpicture
+                {
+                    \pgfplotsset{
+                            discrete plot/.style={
+                                ycomb,           % 绘制针状图
+                                mark=*,          % 数据点标记为实心圆
+                                mark size=2pt,   % 标记大小
+                                line width=1pt,  % 线条宽度
+                                axis lines=middle, % 坐标轴在中间交叉
+                                xmin=-2.5, xmax=2.5, % x轴范围
+                                ymin=-0.2, ymax=1.1, % y轴范围稍稍扩大，让'1'的刻度更清晰
+                                xtick={-2,-1,0,1,2}, % x轴刻度
+                                ytick={1},               % y轴刻度
+                                enlarge x limits=0.1,    % x轴范围适当放大
+                                enlarge y limits=0.2,    % y轴范围适当放大
+                                title style={yshift=0.5em}, % 标题位置
+                                xlabel={$n$},
+                                xlabel style={
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=north west,
+                                },
+                                ylabel style={
+                                    at={(ticklabel* cs:1.0)},
+                                    anchor=west,
+                                    rotate=0,
+                                },
+                            }
+                        }
+                        % ----- 上图: u[n] -----
+                        \begin{axis}[
+                            discrete plot,
+                            ylabel={$x_1[n]$},
+                            %title={单位阶跃信号 (Unit Step Signal)},
+                            at={(0, 5.0cm)} % 调整了间距以适应标题
+                        ]
+                        % 使用蓝色绘制 u[n] 的数据点
+                        \addplot+[blue] coordinates {
+                            (-2, 0) (-1, 0) (0,0) (1,1) (2, 0) 
+                        };
+                        \end{axis}
+                        % ----- 下图: u[n-1] -----
+                        \begin{axis}[
+                            discrete plot,
+                            ylabel={$x_2[n]$},
+                            %title={时移阶跃信号 (Time-Shifted Step)},
+                            at={(0, 0cm)}
+                        ]
+                        % 使用绿色绘制 u[n-1] 的数据点
+                        \addplot+[green] coordinates {
+                            (-2, 0) (-1,0) (0,0) (1,1) (2, 0)
+                        };
+                        \end{axis}
+                        \begin{axis}[
+                            discrete plot,
+                            ylabel={$\hat{x}[n] = x_1[n] + x_2[n]$},
+                            %title={时移阶跃信号 (Time-Shifted Step)},
+                            at={(0, -5cm)}
+                        ]
+                        % 使用绿色绘制 u[n-1] 的数据点
+                        \addplot+[red] coordinates {
+                            (-2, 0) (-1,0) (0,1) (1,1) (2, 0)
+                        };
+                        \end{axis}
+                    }
+                % 第二、三个大括号，分别是总标题和标签
+                {a Counter Example}
+                {fig:counter_example}
+    Calculate their results after median filtering, you will find:
+        \begin{equation}
+            \hat{y}[n] \neq y_1[n] + y_2[n]
+        \end{equation}
+
+    \newpage
+    \subsection{Time Invariance-TI}
+    Look at the following input-output combination:
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x[n]$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y[n]$};
+                    %\node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    %\draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Combination1}
+                {fig:combination1}
+
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$\hat{x}[n]$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$\hat{y}[n]$};
+                    %\node[below=0.5cm of system] (system_label) {\textbf{LTI system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    %\draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {Combination2}
+                {fig:combination2}
+    
+    For: 
+        \begin{equation}
+            \mathrm{every}\quad  x \in \mathbb{X}, \quad
+            \mathrm{every}\quad  N \in \mathbb{Z}
+        \end{equation}
+
+    Let:
+        \begin{equation}
+            \hat{x}[n] = x[n-N] 
+        \end{equation}
+
+    If the system $H$ satisfies the time invariance, then:
+        \begin{equation}
+            \hat{y}[n] = y[n-N]
+        \end{equation}
+    
+    Now can you give an example, satisfies the TI but doesn't satisfy the linearity? Yes, it's:
+        \begin{equation}
+            y[n] = x^2[n]
+        \end{equation}
+    
+    \newpage
+    \subsection{Impulse Response}
+    If a system simulataneously satisfies the linearity and the TI, 
+    then we call it \textcolor{red}{LTI System}.
+
+    In the subsection \textbf{Why do We Need Impulses?}, 
+    we have known that: Any signal can be represented as a linear combination of shifted impulses.
+    
+    In the system perspective, $\delta[n]$ is also very important, 
+    and if we give the LTI system an impulse as the input, 
+    the output is called the \textbf{Impulse Response}, 
+    and the corresponding symbol is $h[n]$:
+        \inserttikzpicture
+                {
+                    \tikzset{
+                        node distance=2.5cm,
+                        block/.style={
+                            rectangle, 
+                            draw, 
+                            thick, 
+                            minimum height=1.5cm, 
+                            minimum width=1.5cm, 
+                            text centered
+                        },
+                        text_node/.style={
+                            align=center
+                        },
+                        arrow/.style={
+                            -Stealth, % 使用 arrows.meta 库定义的箭头样式
+                            thick
+                        }
+                    }
+                    % 2. 将原代码中的节点和绘图指令放在这里
+                    % 定义各个节点 (Node)
+                    \node[text_node] (input) {$x[n]=\delta[n]$};
+                    \node[block, right=of input] (system) {H};
+                    \node[text_node, right=of system] (output) {$y[n]=h[n]$};
+                    \node[below=0.5cm of system] (system_label) {\textbf{Linear system}};
+                    % 绘制箭头连接节点
+                    \draw[arrow] (input) -- (system);
+                    \draw[arrow] (system) -- (output);
+                    \draw[arrow] (system.south) -- (system_label.north); % 连接锚点以获得更精确的箭头位置
+                }
+                {LTI System}
+                {fig:LTI_system}
+    
+    \noindent \textbf{FAB FACT}
+
+    If I know the impulse response of an LTI system, 
+    then I will know the system response of any arbitraty input.
+
+    \noindent \textbf{Proof}.
+    
+    Suppose there is an LTI system $H$.
+
+    Consider an arbitrary input-output combination:
+        \begin{equation}
+            \delta[n] \quad \xrightarrow{\mathrm{LTI \quad system}} \quad h[n]
+        \end{equation}
+    
+    Give the impulse an arbitrary shift, according to the time-invariance:
+        \begin{equation}
+            \delta[n-k] \quad \xrightarrow{\mathrm{LTI \quad system}} \quad h[n-k], \quad k\in Z
+        \end{equation}
+    
+    Give the shifted impulse an scaling scalar, according to the scaling property:
+        \begin{equation}
+            x[k] \delta[n-k] \quad \xrightarrow{\mathrm{LTI \quad system}} \quad x[k] h[n-k]
+        \end{equation}
+    
+    According to the additivity, we have:
+        \begin{equation}
+            \sum_{k=-\infty}^{+\infty} x[k] \delta[n-k] \quad \xrightarrow{\mathrm{LTI \quad system}} \quad \sum_{k=-\infty}^{+\infty} x[k] h[n-k]
+        \end{equation}
+
+    Now you must have find that, the infinite series on the left can form an arbitrary signal,
+    that is to say:
+        \begin{equation}
+            x[n] = \sum_{k=-\infty}^{+\infty} x[k]
+        \end{equation}
+    
+    \noindent \textbf{End}.
+
+    \noindent To give you an intutive understanding, look at the following example.
+
+    There is an LTI system $H$, and we the impulse response is:
+        \begin{equation}
+            \delta[n] \quad \xrightarrow{\mathrm{LTI \quad system}} \quad h[n]
+        \end{equation}
+    And the following is the input:
+        \inserttikzpicture
+                    {
+                        \begin{axis}[
+                            % --- 坐标轴样式 ---
+                            axis lines=middle,              % 坐标轴在原点 (0,0) 相交
+                            xlabel={$n$},                   % 横轴名称
+                            ylabel={$x[n]$},                % 纵轴名称
+                            % --- 坐标轴范围与刻度 ---
+                            % 扩大 xmin 和 xmax 为省略号留出空间
+                            xmin=-3.5, xmax=2.5,
+                            ymin=0, ymax=2.5,
+                            xtick={-2, -1, 0, 1},
+                            ytick=\empty,
+                            % --- 标签位置样式 ---
+                            xlabel style={at={(ticklabel* cs:1.0)}, anchor=north west},
+                            ylabel style={at={(ticklabel* cs:1.0)}, anchor=east, rotate=0},
+                            % --- 自定义节点(标签)的样式 ---
+                            nodes near coords={\pgfplotspointmeta}, 
+                            every node near coord/.style={
+                                anchor=east, 
+                                rotate=0,
+                                black,
+                                font=\small
+                            }
+                        ]
+                        % --- 绘制火柴杆和标签 ---
+                        \addplot+ [
+                            ycomb, blue, mark=*, mark size=2pt, line width=1.2pt
+                        ] 
+                        table[
+                            header=false,
+                            x index=0,              % 使用第 0 列 (第一列) 作为 x
+                            y index=1,              % 使用第 1 列 (第二列) 作为 y
+                            meta index=2,             % 使用第 2 列 (第三列) 作为标签元数据
+                            point meta=explicit symbolic,
+                            row sep=crcr % 修正了行分隔符
+                        ] {
+                            % n     height   label
+                           -2      1          {$1$} \\
+                           -1      2          {$2$} \\
+                            0      0.5        {$0.5$}  \\
+                            1      1.5        {$1.5$}  \\
+                        };
+                        \end{axis}
+                }
+                {Median Filter Output: $y[n]$}
+                {fig:med_filter_output}
+    
+    \noindent What is the output?
+
+    \noindent \textbf{Solution}.
+
+    Decompose the input:
+        \begin{equation}
+            x[n] = \delta[n+2] + 2\delta[n+1] + 0.5\delta[n] + 1.5\delta[n-1]                       
+        \end{equation}
+    An important point is: here every component is a signal, not a scalar.
+
+    As the system has additivity and scaling property, we can input each component seperately,
+    then get the corresponding output:
+        \begin{equation}
+            y[n] = (1)h[n+2] + (2)h[n+1] + (0.5)h[n] + (1.5)h[n-1]
+        \end{equation}
+    
+    \noindent \textbf{End}.
+
+    \subsection{Convolution}
+    Considering an LTI system, if we have known the impulse response $h[n]$, then:
+        \begin{equation}
+            y[n] = \sum_{k=-\infty}^{+\infty} x[k] h[n-k]
+        \end{equation}
+    We give this operation a name-\textbf{Convollution}, and the corresponding symbols is $\ast$:
+        \begin{equation}
+            \begin{aligned}
+                y[n] &= \sum_{k=-\infty}^{+\infty} x[k] h[n-k] \\
+                     &= x \ast h
+            \end{aligned}
+        \end{equation}
+    
+    Now we can say: The output of an LTI system is the convolution of the input and the impulse response.
+
+    \subsubsection{Is the convolution operation commutative?}
+
+    \noindent \textbf{Proof}.
+
+    Let $l=n-k$, and change the summation variable of the above equation from $k$ to $l$:
+        \begin{equation}
+            \begin{aligned}
+                y[n] &= \sum_{l=-\infty}^{+\infty} x[n-l] h[l] \\
+                     &= h \ast x
+            \end{aligned}
+        \end{equation}
+    
+    So the convolution is commutative.
+
+    \noindent \textbf{End}.
+
+    \subsubsection{Does the convolution operation have the associative law?}
+    In other words, we want to prove:
+        \begin{equation}
+            (x \ast h_1) \ast h_2 = x \ast(h_1 \ast h_2) 
+        \end{equation}
+
+    \noindent \textbf{Proof}.
+
+    Let:
+        \begin{equation}
+            \begin{aligned}
+                y[n] &= (x\ast h_1)[n]\\
+                     &= \sum_{k=-\infty}^{+\infty} x[k]h_1[n-k]
+            \end{aligned}
+        \end{equation}
+    
+    Then the left side of the equation (LSE) is:
+        \begin{equation}
+            \begin{aligned}
+        \mathbf{LSE} &= (y \ast h_2)[n]\\
+                     &= \sum_{m=-\infty}^{+\infty} \boxed{y[m]}h_2[n-m] \\
+                     &= \sum_{m=-\infty}^{+\infty} \boxed{\sum_{k=-\infty}^{+\infty} x[k]h_1[m-k]} h_2[n-m] \\
+                     &= \sum_{m=-\infty}^{+\infty} \sum_{k=-\infty}^{+\infty} x[k]h_1[m-k] h_2[n-m]
+            \end{aligned}
+        \end{equation}
+    
+    In the above-mentioned summation process, we calculate the $y[m]$ first, 
+    so here $m$ is considered as a scalar and the summation variable is $k$, $h[n-m]$ is also a scalar:
+        \begin{equation}
+            \mathbf{LSE} =\sum_{m=-\infty}^{+\infty} \boxed{\sum_{k=-\infty}^{+\infty} (x[k]h_1[m-k] h_2[n-m])}
+        \end{equation}
+    
+    We can also take out the box:
+        \begin{equation}
+            \mathbf{LSE} =\sum_{m=-\infty}^{+\infty} \sum_{k=-\infty}^{+\infty} x[k]h_1[m-k] h_2[n-m]
+        \end{equation}
+    
+    Suppose the summation converges absolutely, we can swap the order of the summation:
+        \begin{equation}
+            \mathbf{LSE} =\sum_{k=-\infty}^{+\infty} \sum_{m=-\infty}^{+\infty}  x[k]h_1[m-k] h_2[n-m]
+        \end{equation}
+    
+    Here we calculate the summation that uses $m$ as a variable, so $x[k]$ and $k$ is a scalar:
+        \begin{equation}
+            \mathbf{LSE} =\sum_{k=-\infty}^{+\infty}x[k] \boxed{\sum_{m=-\infty}^{+\infty}  h_1[m-k] h_2[n-m]}
+        \end{equation}
+
+    Let's process $\sum_{m=-\infty}^{+\infty}  h_1[m-k] h_2[n-m]$ first. Let $p=m-k$, so $m=p+k$:
+        \begin{equation}
+            \begin{aligned}
+                \sum_{m=-\infty}^{+\infty}  h_1[m-k] h_2[n-m] &= \sum_{p=-\infty}^{+\infty}  h_1[p] h_2[n-(p+k)] \\
+                                                              &= \sum_{p=-\infty}^{+\infty}  h_1[p] h_2[(n-k)-p] \\
+                                                              &= (h_1 \ast h_2)[n-k]
+            \end{aligned}
+        \end{equation}
+    
+    So:
+        \begin{equation}
+            \begin{aligned}
+                \mathbf{LSE} &=\sum_{k=-\infty}^{+\infty}x[k] \boxed{\sum_{m=-\infty}^{+\infty}  h_1[m-k] h_2[n-m]}\\
+                             &= \sum_{k=-\infty}^{+\infty}x[k] (h_1 \ast h_2)[n-k]\\
+                             &= x* (h_2\ast h_1)[n]
+            \end{aligned}
+        \end{equation}
+    
+    \noindent \textbf{End}.
+    
+    \subsubsection{How can we understand $\sum_{k=-\infty}^{+\infty} \sum_{m=-\infty}^{+\infty}  x[k]h_1[m-k] h_2[n-m]$? }
+
+    Let:
+        \begin{equation}
+            T(m,k) = x[k]h_1[m-k] h_2[n-m]
+        \end{equation}
+    
+    Look at the following picture:
+        \inserttikzpicture
+        {
+                \tikzset{
+                % 增加 x 和 y 的单位长度，为标签提供更多空间
+                x=2cm, 
+                y=2cm,
+                % 结点样式：蓝色实心圆点
+                dot/.style={circle, fill=blue, inner sep=1.5pt},
+                % 标签样式
+                lbl/.style={font=\strut}
+            }
+            
+            % --- 1. 绘制网格线 ---
+            % (我们绘制一个 3x3 的正方形区域，交点在 -1, 0, 1)
+            
+            % 绘制垂直线 (k-1, k, k+1)
+            \foreach \x in {-1, 0, 1} {
+                % 绘制线，并稍微延长
+                \draw[gray] (\x, -1.5) -- (\x, 1.5);
+            }
+            % 绘制水平线 (m-1, m, m+1)
+            \foreach \y in {-1, 0, 1} {
+                % 绘制线，并稍微延长
+                \draw[gray] (-1.5, \y) -- (1.5, \y);
+            }
+
+            % --- 2. 绘制所有9个结点 (交点) ---
+            \foreach \x in {-1, 0, 1} {
+                \foreach \y in {-1, 0, 1} {
+                \node[dot] at (\x, \y) {};
+                }
+            }
+            % --- 3. 放置对齐网格线的标签 ---
+            % 放置列标签 (对齐 x = -1, 0, 1)
+            % anchor=south 使标签位于坐标 (x, 1.5) 的正上方
+            \node[lbl, anchor=south] at (-1, 1.5) {$k-1$};
+            \node[lbl, anchor=south] at ( 0, 1.5) {$k$};
+            \node[lbl, anchor=south] at ( 1, 1.5) {$k+1$};
+            
+            % 放置行标签 (对齐 y = 1, 0, -1)
+            % anchor=east 使标签位于坐标 (-1.5, y) 的正左方
+            \node[lbl, anchor=east] at (-1.5,  1) {$m-1$};
+            \node[lbl, anchor=east] at (-1.5,  0) {$m$};
+            \node[lbl, anchor=east] at (-1.5, -1) {$m+1$};
+
+            % --- 4. 标注中心结点 (k列, m行) ---
+            % 也就是 (x=0, y=0) 处
+            % 我们在 (0,0) 结点的右侧放置标签，以免遮挡圆点
+            \node[right=2mm, font=\strut] at (0, -0.2) {$T(m,k)$};
+        }
+        {Binary Summation}
+        {fig:binary_sum}
+
+    So the summation becomes:
+        \begin{equation}
+            \sum_{k=-\infty}^{+\infty} \sum_{m=-\infty}^{+\infty} T(m,k) = \sum_{k=-\infty}^{+\infty} \boxed{\sum_{m=-\infty}^{+\infty} T(m,k)}
+        \end{equation}
+    Actually the firsr summation sums all the elements at column $k$. After the summation finishes, we get a function about $k$,
+    Then it sums using $k$.
+
+    \subsubsection{A cascade of two LTI system.}
+
+    Look at the following example:
+        \inserttikzpicture
+            {
+                % --- TikZ 绘图代码开始 ---
+                \tikzset{
+                    % 定义节点间距
+                    node distance=2.5cm, 
+                    % 信号节点样式 (x[n], y[n], q[n])
+                    signal_node/.style={
+                        font=\normalsize
+                    },
+                    % LTI 系统方框样式 (F, G)
+                    system_block/.style={
+                        font=\normalsize,
+                        rectangle,
+                        draw, thick,
+                        minimum width=1.5cm,
+                        minimum height=1cm,
+                        align=center
+                    },
+                    % 级联系统的外框样式
+                    enclosing_box/.style={
+                        rectangle,
+                        draw,
+                        dashed, % 使用虚线以区分
+                        inner sep=0.5cm % 方框和内部元素的间距
+                    },
+                    % 箭头样式
+                    arrow_style/.style={
+                        -Stealth,
+                        thick,
+                        draw
+                    }
+                }
+
+                % --- 1. 定义从左到右的4个主要节点 ---
+                \node[signal_node] (input) {$x[n]$};
+                \node[system_block, right=of input] (sys_F) {F};
+                \node[system_block, right=of sys_F] (sys_G) {G};
+                \node[signal_node, right=of sys_G] (output) {$y[n]$};
+
+                % --- 2. 绘制箭头 ---
+                \draw[arrow_style] (input) -- (sys_F);
+                % 箭头 F -> G, 并在上方标注 q[n]
+                \draw[arrow_style] (sys_F) -- 
+                    node[above, midway, font=\normalsize] {$q[n]$} (sys_G);
+                \draw[arrow_style] (sys_G) -- (output);
+                % --- 3. 绘制包裹 F 和 G 的大方框 ---
+                % 使用 fit 库, 创建一个刚好能"适应" F 和 G 的节点
+                \node[enclosing_box, fit=(sys_F) (sys_G)] (cascade_box) {};
+                % --- 4. 绘制从大方框向下的箭头, 并标注 h[n] ---
+                % 从大方框的南锚点 (cascade_box.south) 向下画 1cm
+                % 并在新位置的下方标注 h[n]
+                \draw[arrow_style] (cascade_box.south) -- ++(0, -1cm) 
+                    node[below] {$h[n]$};
+                % --- TikZ 绘图代码结束 ---
+            }
+            {Cascade of two LTI systems, F and G}
+            {fig:lti_cascade}
+    
+    According to the direction of the signal flow, we have:
+        \begin{equation}
+            y[n] = (x\ast f) \ast g
+        \end{equation}
+    
+    As the convolution has the associative law, we have:
+        \begin{equation}
+            \begin{aligned}
+                y[n] &= (x\ast f) \ast g \\
+                     &= x \ast (f \ast g) 
+            \end{aligned}
+        \end{equation}
+    So we have:
+        \begin{equation}
+            \begin{aligned}
+            h &=  f \ast g \\
+              &=  g \ast f
+            \end{aligned}
+        \end{equation}
+    so we know: we can change the order of $F$ and $G$.
+
+    
+    
+    
+    
+    
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+        
+    
+
+
+
+
+    
+
+
+
+
+
+    
 
     
     
