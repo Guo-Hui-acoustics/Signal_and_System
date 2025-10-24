@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  23 OCT 2025 21:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  24 OCT 2025 11:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1013,7 +1013,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 910.
 
-[26] [27]) [28] (./content/chapter3.tex) (./main.aux)
+[26] [27] [28] [29]) [30] (./content/chapter3.tex) (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1028,22 +1028,22 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 1787FB41D11BE8E99A3A7EC728E3EBC4;4385
-(rerunfilecheck)             After:  618DF5090BEDD6D1F7BB632F9A49B376;4390.
+(rerunfilecheck)             Before: 4D250A919BF40065C812589B3EF1A1C5;4571
+(rerunfilecheck)             After:  679417B1CE6A5B09C77BD303BFFACAD8;4581.
  ) 
 Here is how much of TeX's memory you used:
- 40033 strings out of 474116
- 934696 string characters out of 5735645
+ 40064 strings out of 474116
+ 935242 string characters out of 5735645
  1945190 words of memory out of 5000000
- 61581 multiletter control sequences out of 15000+600000
+ 61603 multiletter control sequences out of 15000+600000
  600046 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  105i,14n,145p,722b,2357s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb>
-Output written on main.pdf (30 pages, 299843 bytes).
+Output written on main.pdf (32 pages, 305557 bytes).
 PDF statistics:
- 461 PDF objects out of 1000 (max. 8388607)
- 391 compressed objects within 4 object streams
- 146 named destinations out of 1000 (max. 500000)
- 189 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 483 PDF objects out of 1000 (max. 8388607)
+ 410 compressed objects within 5 object streams
+ 155 named destinations out of 1000 (max. 500000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 
