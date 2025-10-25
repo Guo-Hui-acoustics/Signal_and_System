@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  25 OCT 2025 18:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.21)  25 OCT 2025 18:32
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1071,7 +1071,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  105i,14n,145p,722b,2364s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb><d:/LenovoSoftstore/TexLive/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb>
-Output written on main.pdf (33 pages, 331975 bytes).
+Output written on main.pdf (33 pages, 331982 bytes).
 PDF statistics:
  494 PDF objects out of 1000 (max. 8388607)
  418 compressed objects within 5 object streams
