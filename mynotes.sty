@@ -1,98 +1,126 @@
-% mynotes.sty - 我的个人笔记样式文件
-
+% mynotes.sty - 我的个人笔记样式文件 
 
 % 0. 文件标识
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mynotes}[2025/10/06 My Personal Notes Style]
 
-
 % 1. 引入依赖的宏包 
-% 1.1. Times New Roman，正文、普通段落字体
 \usepackage{newtxtext} 
+\usepackage{inconsolata}
 \usepackage[T1]{fontenc}
-% 1.2. 布局参数
 \usepackage[a4paper, top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
-\usepackage{lipsum}   % 用于插入占位文本
-\usepackage{abstract} % 用于更好地控制摘要环境
-\usepackage{graphicx} % 插入图片的核心宏包
-\usepackage{float}    % 支持 [H] 浮动选项
-\usepackage{subcaption} % 用于实现多图并排，是 subfigure 的现代化替代品
-% 1.3. 设置 1.5 倍行距
+\usepackage{lipsum}   
+\usepackage{abstract} 
+\usepackage{graphicx} 
+\usepackage{float}    
+\usepackage{subcaption} 
 \RequirePackage{setspace}
 \setstretch{1.5}
-% 1.4. 公式环境
 \usepackage{amsmath}   
 \usepackage{amssymb}
 \usepackage{arydshln} 
 \usepackage{empheq}
-% 1.5. 绘图环境
 \usepackage{tikz} 
-\usetikzlibrary{tikzmark}     % 用于在文本中创建 TikZ 节点
-\usetikzlibrary{fit}          % 用于 \node[fit=...] 来创建包裹节点的方框
-\usetikzlibrary{positioning}  % 用于 below=of 等语法
+\usetikzlibrary{tikzmark}     
+\usetikzlibrary{fit}          
+\usetikzlibrary{positioning}  
 \usepackage{color}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{positioning} 
 \usetikzlibrary{shapes.geometric, calc, tikzmark} 
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.18} % (或者 1.17, 1.16 等)
+\pgfplotsset{compat=1.18} 
 \usepgfplotslibrary{groupplots}
-% 1.6. 为引用增加颜色
-\usepackage{xcolor}  % 必须在 hyperref 之前加载
-\definecolor{lightblue}{rgb}{0.2, 0.4, 0.8} % 调整RGB值来获得喜欢的蓝色
-\usepackage{hyperref} % 加载超链接宏包
+\usepackage{xcolor}  
+\definecolor{lightblue}{rgb}{0.2, 0.4, 0.8} 
+\usepackage{hyperref} 
 \hypersetup{
-    colorlinks=true, % 将链接文字带颜色，而不是一个丑陋的方框
-    linkcolor=blue,  % 内部链接的颜色 (公式, 图表, 章节)
-    citecolor=green, % 文献引用的颜色 (这里用绿色做区分)
-    urlcolor=cyan,   % 网址链接的颜色
-    linkbordercolor={1 1 1}, % 可选：去除链接周围的边框 (如果 colorlinks=false)
+    colorlinks=true, linkcolor=blue, citecolor=green, 
+    urlcolor=cyan, linkbordercolor={1 1 1},
 }
-\renewcommand{\eqref}[1]{\hyperref[#1]{\textup{\tagform@{\ref*{#1}}}}} % 加上圆括号
-\usepackage{nameref} % 放到 hyperref 之后，可引用名字
+\renewcommand{\eqref}[1]{\hyperref[#1]{\textup{\tagform@{\ref*{#1}}}}}
+\usepackage{nameref} 
 
 
 % 2. 为封面页定义新的存储命令
 \newcommand{\notetitle}[1]{\def\@notetitle{#1}}
 \newcommand{\noteauthor}[1]{\def\@noteauthor{#1}}
-\newcommand{\noteschool}[1]{\def\@noteschool{#1}}
-\newcommand{\notecollaborator}[1]{\def\@notecollaborator{#1}}
-\newcommand{\notecollabschool}[1]{\def\@notecollabschool{#1}}
 \newcommand{\notedate}[1]{\def\@notedate{#1}}
 \newcommand{\noteabstract}[1]{\def\@noteabstract{#1}}
-
-
-% 3. 创建一个命令来生成封面页
+% 2.1. 为新封面布局声明变量
+\newsavebox{\ContentAboveRuleBox}
+\newdimen{\TotalBoxHeight}
+\newdimen{\SpaceBefore}
+% 2.3. 生成封面页
+%    创建命令来生成 *新的* 封面页
+%    这个命令现在包含了 'lrbox' 测量和 'titlepage' 布局
 \newcommand{\makenotetitle}{
+    % 测量和计算
+    % (这必须在 \begin{document} 之后执行，所以我们把它放在这里)
+    \begin{lrbox}{\ContentAboveRuleBox}
+        \begin{minipage}{\linewidth} % 使用 minipage 确保宽度正确
+            % 1. 标题与作者 (使用 \@notetitle 和 \@noteauthor 变量)
+            {\Huge \centering  \@notetitle \par}
+            {\large \hfill \@noteauthor \par}
+
+            % 2. 顶部横线
+            \noindent\rule{\linewidth}{2pt}\par
+            
+            % 4. 中心"图像" (临时占位符)
+            \vspace{0.2cm} % 顶部横线下的间距
+            \begin{center}
+                {\fontsize{60}{72}\selectfont \bfseries Signal and System}
+            \end{center}
+            \vspace{0.2cm} % 底部横线上的间距
+        \end{minipage}
+    \end{lrbox}
+    % 计算总高度
+    \TotalBoxHeight=\dimexpr\ht\ContentAboveRuleBox + \dp\ContentAboveRuleBox\relax
+    % 计算顶部空白 (使用 geometry 设置的 1in 边距)
+    \SpaceBefore=\dimexpr 0.5\paperheight - 1in - \TotalBoxHeight \relax
+    % 标题页渲染
     \begin{titlepage}
-        \centering
+        \pagestyle{empty} % 标题页不显示页码
+        % 插入我们计算好的顶部空白
+        \vspace*{\SpaceBefore}
         
-        {\Huge \bfseries \@notetitle \par}
-        \vspace{1.0cm}
+        % 渲染 "保存盒" 里的所有内容
+        \noindent\usebox{\ContentAboveRuleBox}\par
         
-        {\large \@noteauthor \par}
-        {\normalsize \@noteschool \par}
-        \vspace{1.0cm}
+        % 渲染底部的横线 (精确位于页面 1/2 处)
+        \noindent\rule{\linewidth}{2pt}\par
         
-        {\large \textbf{Collaborator:} \par} % "Collaborator:" 文本硬编码在样式里
-        {\large \@notecollaborator \par}
-        {\normalsize \@notecollabschool \par}
-        \vspace{1.0cm}
-        
-        {\large \@notedate \par}
-        \vspace{1.0cm}
-        
-        \begin{abstract}
-            \@noteabstract
-        \end{abstract}
-        
+        % 页脚信息
+        \vfill 
+        \small % 页脚使用小号字体
+        % 版权行 (使用 \@noteauthor 和 \@notedate 变量)
+        Copyright \copyright\ \@notedate\ \@noteauthor  \ (\href{gh20222734@163.com}{gh20222734@163.com})
+        \par 
+        % 许可证行 (占位符)
+        This work is licensed under a Creative Commons Attribution 4.0 International License.
+        \par 
+        % 链接行 (占位符)
+        Project repository: \url{https://github.com/Guo-Hui-acoustics/DSP}
+        %\par
+        %Document source: \url{https://example.com/notes/download}
     \end{titlepage}
+}
+
+% 3. 创建一个命令来生成 *单独的* 摘要页
+\newcommand{\makeabstractpage}{
+    \newpage % 开始新的一页
+    \thispagestyle{empty} % 本页不显示页码
+    % 1. 手动创建左对齐、加粗的 "Abstract" 标题
+    \noindent{\Large\bfseries Abstract\par} 
+    % 2. 打印摘要内容。
+    \@noteabstract
+    \clearpage % 结束本页
 }
 
 
 % 4. 自定义图片插入命令
+% (这部分保持不变)
     % 4.1. 单图插入命令 \insertsingleimage
-    % 用法: \insertsingleimage{图片路径}{图片标题}{图片标签}
         \newcommand{\insertsingleimage}[3]{
             \begin{figure}[H]
                 \centering
@@ -101,9 +129,8 @@
                 \label{#3}
             \end{figure}
         }
-    % 4.2. 双图横排命令 \insertdoubleimage
-    % 用法: \insertdoubleimage{图1路径}{图1标题}{图1标签}{图2路径}{图2标题}{图2标签}{总标题}{总标签}
-        \newcommand{\insertdoubleimage}[8]{
+    % ( ... 你其他的自定义命令 ... )
+    \newcommand{\insertdoubleimage}[8]{
             \begin{figure}[H]
                 \centering
                 % 第一个子图
@@ -126,9 +153,8 @@
             \end{figure}
         }
 
-
 % 5. 自定义一个插入 TikZ 图像的命令
-    % 用法: \inserttikzpicture{<tikz code>}{<caption text>}{<label name>}
+% (这部分保持不变)
     \newcommand{\inserttikzpicture}[3]{
         \begin{figure}[H]
             \centering
@@ -144,13 +170,8 @@
         \end{figure}
     }
 
-
 % 6. 自定义表格插入命令
-    % 用法: \inserttable{<列格式>}{<表格内容>}{<表格标题>}{<表格标签>}
-    % <列格式>: 定义表格每一列的对齐方式，例如 {ccc} 表示三列居中，{l|r} 表示一列左对齐、一列右对齐，中间有竖线。
-    % <表格内容>: 表格的主体，使用 & 分隔单元格，用 \\ 换行。例如: A & B & C \\ \hline D & E & F
-    % <表格标题>: 显示在表格上方的标题文字。
-    % <表格标签>: 用于在文中引用表格的标签，例如 tbl:data。
+% (这部分保持不变)
     \newcommand{\inserttable}[4]{
         \begin{table}[H] % 使用 [H] 选项让表格出现在代码所在的位置
             \centering   % 表格整体居中
@@ -167,23 +188,13 @@
 
     
 % 7. 自定义代码块插入命令，依赖 minted 宏包
+% (这部分保持不变)
 \usepackage{minted}
 \setminted{
-    %style=monokai,       % 设置高亮风格 (monokai 是一个经典的深色主题)
-    %bgcolor=bg,          % 设置背景颜色名称
-    frame=single,         % 添加一个简单的边框
-    framesep=2mm,        % 边框与代码的间距
-    fontsize=\small,     % 代码字体大小
-    % linenos,             % 显示行号
-    breaklines,          % 自动折行
-    tabsize=4,           % Tab 宽度
-    python3=true         % 如果主要使用 Python 3，这是一个好习惯
+    frame=single, framesep=2mm, fontsize=\small, 
+    breaklines, tabsize=4, python3=true         
 }
-% 定义一个深灰色背景，类似 VS Code
 \definecolor{bg}{rgb}{0.16, 0.16, 0.18} 
-% 自定义命令 
-    % 从外部文件插入代码的命令 ---
-    % 用法: \insertcodefromfile{<language>}{<filename>}{<caption text>}{<label name>}
     \newcommand{\insertcodefromfile}[4]{
         \begin{figure}[H]
             \centering
