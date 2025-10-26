@@ -54,6 +54,15 @@
 % 2.3. 生成封面页
 %    创建命令来生成 *新的* 封面页
 %    这个命令现在包含了 'lrbox' 测量和 'titlepage' 布局
+% 2.3. 生成封面页
+%    创建命令来生成 *新的* 封面页
+%    这个命令现在包含了 'lrbox' 测量和 'titlepage' 布局
+% 2.3. 生成封面页
+%    创建命令来生成 *新的* 封面页
+%    这个命令现在包含了 'lrbox' 测量和 'titlepage' 布局
+% 2.3. 生成封面页
+%    创建命令来生成 *新的* 封面页
+%    这个命令现在包含了 'lrbox' 测量和 'titlepage' 布局
 \newcommand{\makenotetitle}{
     % 测量和计算
     % (这必须在 \begin{document} 之后执行，所以我们把它放在这里)
@@ -66,12 +75,71 @@
             % 2. 顶部横线
             \noindent\rule{\linewidth}{2pt}\par
             
-            % 4. 中心"图像" (临时占位符)
-            \vspace{0.2cm} % 顶部横线下的间距
+            \vspace{0.5cm} % 顶部横线下的间距 (您可以按需调整)
             \begin{center}
-                {\fontsize{60}{72}\selectfont \bfseries Signal and System}
+                % --- TikZ 图像开始 ---
+                \begin{tikzpicture}[
+                    scale=1.8, % <--- 在这里调整图像的整体大小以适应封面
+                    font=\normalsize, % 字体大小
+                    node distance=2.5cm and 2.5cm,
+                    % 样式：定义一个灰色填充的矩形框
+                    block/.style={
+                        draw, 
+                        fill=gray!20, 
+                        rectangle, 
+                        minimum height=1.2cm, 
+                        minimum width=2.5cm, 
+                        align=center
+                    },
+                    % 样式：用于多行标签
+                    io_label/.style={
+                        align=left
+                    },
+                    % 样式：设置默认箭头
+                    >=Stealth
+                  ]
+                  
+                  % --- 顶行 (时域) ---
+                  \node (x_t) {$x(t)$};
+                  \node (h_t) [block, right=of x_t] {$h(t)$};
+                  \node (y_t) [io_label, right=of h_t] {$y(t) = h(t) * x(t)$};
+                  \draw [->] (x_t) -- (h_t);
+                  \draw [->] (h_t) -- (y_t.west); 
+
+                  % --- 端口 ---
+                  \node (in_term_open) [below=0.7cm of x_t] {}; 
+                  \draw (in_term_open.center) circle (2pt);
+                  \node (in_term_closed) [below=0.5cm of in_term_open] {}; 
+                  \draw [fill=black] (in_term_closed.center) circle (2pt);
+                  \draw (in_term_open.center) ++(0, -2pt) -- (in_term_closed.center); 
+                  \node (out_term_open) at (y_t.west |- in_term_open.center) {}; 
+                  \draw (out_term_open.center) circle (2pt);
+                  \node (out_term_closed) [below=0.5cm of out_term_open] {};
+                  \draw [fill=black] (out_term_closed.center) circle (2pt);
+                  \draw (out_term_open.center) ++(0, -2pt) -- (out_term_closed.center);
+                  
+                  % --- 底行 (S 域 / 频域) ---
+                  \node (x_s) [io_label, below=of x_t] {$X(s)$ \\ $X(j\omega)$}; 
+                  \node (h_s) [block, at={(h_t.center |- x_s.center)}] {$H(s)$ \\ $H(j\omega)$};
+                  \node (y_s) [io_label, right=of h_s] {
+                    $\begin{aligned}
+                      Y(s) &= H(s) \cdot X(s) \\
+                      Y(j\omega) &= H(j\omega) \cdot X(j\omega)
+                    \end{aligned}$
+                  };
+                  \draw [->] (x_s) -- (h_s); 
+                  \draw [->] (h_s) -- (y_s.west); 
+                  \node [
+                      draw, black,                   % 绘制黑色边框
+                      rounded corners=3pt,           % 轻微的圆角
+                      % 适配所有外部节点
+                      fit=(x_t) (y_t) (in_term_closed) (out_term_closed) (x_s) (y_s), 
+                      inner sep=15pt                 % 边框与内容的间距 (可调整)
+                  ] {};
+                \end{tikzpicture}
             \end{center}
-            \vspace{0.2cm} % 底部横线上的间距
+            \vspace{0.2cm} % 底部横线上的间距 (您可以按需调整)
+
         \end{minipage}
     \end{lrbox}
     % 计算总高度
@@ -94,7 +162,7 @@
         \vfill 
         \small % 页脚使用小号字体
         % 版权行 (使用 \@noteauthor 和 \@notedate 变量)
-        Copyright \copyright\ \@notedate\ \@noteauthor  \ (\href{gh20222734@163.com}{gh20222734@163.com})
+        Copyright \copyright\ \@noteauthor\ \@notedate  \ (\href{gh20222734@163.com}{gh20222734@163.com})
         \par 
         % 许可证行 (占位符)
         This work is licensed under a Creative Commons Attribution 4.0 International License.
